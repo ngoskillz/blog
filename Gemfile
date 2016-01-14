@@ -29,6 +29,8 @@ gem 'omniauth' # Missing gem for auth
 gem 'bootstrap-sass', '~> 3.3.5' # Latest version of bootstrap 11/12/15
 gem 'autoprefixer-rails'
 
+gem 'cancan' # Adding roles to users
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

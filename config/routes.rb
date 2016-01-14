@@ -1,23 +1,31 @@
 Rails.application.routes.draw do
-  devise_for :users
-  get 'welcome/index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # Creating a new resource article
-  Rails.application.routes.draw do
- 
-  # devise_for :users
+
+  # replace devise_for :users with:
+  devise_for :users,  :controllers => { :registrations => "users/registrations" }
+
+
   resources :articles do
     resources :comments
   end
-  root 'welcome#index'
+  
+  root 'home#index'
 
-  end
+  get "categories" => "home#categories", as: :categories
+  get "video" => "home#video", as: :video
+  get "about" => "home#about", as: :about
+  get "contact" => "home#contact", as: :contact
+
+  get "articles_list" => "articles#index", as: :articles_list
 
   # Creating a new resource users
   # Rails.application.routes.draw do
- 
+
+  
+
   # devise_for :users
   # root 'welcome#index'
 
