@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
   belongs_to :role
-  # enum role: [:user, :moderator, :banned, :editor, :admin]
   attr_accessor :login
   before_create :set_default_role
   has_many :comment
@@ -36,7 +35,7 @@ class User < ActiveRecord::Base
   }
 
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
-  
+
   # Define user roles
   def role?(role)
     return self.role.name == role
