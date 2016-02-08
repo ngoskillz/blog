@@ -7,9 +7,14 @@
   <strong>Comment:</strong>
   <%= comment.body %>
 </p>
- 
-<p>
-  <%= link_to 'Destroy Comment', [comment.article, comment],
-               method: :delete,
-               data: { confirm: 'Are you sure?' } %>
-</p>
+
+<% if user_signed_in? %>
+  <% case current_user.role.name %>
+    <% when 'moderator', 'admin' %>
+      <p>
+        <%= link_to 'Destroy Comment', [comment.article, comment],
+                     method: :delete,
+                     data: { confirm: 'Are you sure?' } %>
+      </p>
+  <% end %>
+<% end %>
