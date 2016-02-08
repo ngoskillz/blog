@@ -27,7 +27,6 @@ gem 'bootstrap-sass', '~> 3.3.5' # Latest version of bootstrap 11/12/15
 gem 'autoprefixer-rails'
 
 group :development, :test do
-  gem 'sqlite3', '1.3.9'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
