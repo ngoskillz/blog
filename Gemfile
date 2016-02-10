@@ -5,6 +5,8 @@ gem 'rails', '4.2.1'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 
+# Simple, Heroku-friendly Rails app configuration using ENV and a single YAML file
+gem 'figaro'
 # User PostGres as the database
 gem 'pg'
 # Use SCSS for stylesheets
