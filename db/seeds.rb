@@ -19,7 +19,7 @@ user_roles.each do |role|
   # Generate users and assign roles
   seed_user = User.create(username: usernames[name_index],
                           email: email_addresses[email_index],
-                          password: "iloveyammer")
+                          password: ENV['SEED_USER_PASSWORD'])
   seed_user.role_id = role_count
   seed_user.save
   # Increment counts and index for the next user
