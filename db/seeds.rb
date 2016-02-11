@@ -1,20 +1,31 @@
+# Learnings, after refactor
 # User Roles for the blog
 user_roles = ['user', 'moderator', 'banned', 'editor', 'admin']
 
-# Learnings, after refactor
+# Setup arrays and initialize counts
 usernames = []
 email_addresses = []
-user_roles.each do |role|
-  Role.find_or_create_by({name: role})            # Create the role types in the database
-  names = "mike" + user_roles[i]                  # Generate a username for each role
-  usernames.push(names)
-  emails = usernames[i] + "@salmonellaville.com"  # Generate the email addresses based on username
-  email_addresses.push(emails)
+role_count = 1 # role_ids are 1 user, 2 moderator, 3 banned, 4 editor, 5 admin 
+name_index = 0
+email_index = 0
 
-  role_count = i + 1                              # Generate users and assign roles
-  seed_user = User.create(username: usernames[i], email: email_addresses[i], password: "iloveyammer")
+user_roles.each do |role|
+  Role.find_or_create_by({name: role}) # Create the role types in the database
+  # Generate usernames and email addresses
+  names = "mike" + role
+  usernames.push(names)
+  emails = usernames[name_index] + "@salmonellaville.com"
+  email_addresses.push(emails)
+  # Generate users and assign roles
+  seed_user = User.create(username: usernames[name_index],
+                          email: email_addresses[email_index],
+                          password: "iloveyammer")
   seed_user.role_id = role_count
   seed_user.save
+  # Increment counts and index for the next user
+  role_count = role_count + 1
+  name_index = name_index + 1
+  email_index = email_index + 1
 end
 
 # # Learnings, before refactor
