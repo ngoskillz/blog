@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  # http://guides.rubyonrails.org/routing.html how to route and tells you what you get for free
+
   # replace devise_for :users with:
   devise_for :users,  :controllers => { :registrations => "users/registrations" }
 
@@ -10,14 +12,14 @@ Rails.application.routes.draw do
   # Home page  
   root 'home#index'
 
+  # Welcome page
+  get 'welcome/index'
+
   # Navbar items
   get "categories" => "home#categories", as: :categories
   get "video" => "home#video", as: :video
   get "about" => "home#about", as: :about
   get "contact" => "home#contact", as: :contact
-
-  # Article List drop down
-  get "articles list" => "articles#index", as: :articles_list
 
   # TODO: Implement this if needed
   # User List

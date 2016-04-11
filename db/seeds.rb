@@ -13,15 +13,19 @@ user_roles.each do |role|
   Role.find_or_create_by({name: role}) # Create the role types in the database
   # Generate usernames and email addresses
   names = "mike" + role
+  puts "Created Name"
   usernames.push(names)
   emails = usernames[name_index] + "@salmonellaville.com"
+  puts "Created emails"
   email_addresses.push(emails)
   # Generate users and assign roles
   seed_user = User.create(username: usernames[name_index],
                           email: email_addresses[email_index],
                           password: ENV['SEED_USER_PASSWORD'])
+  puts "Created User"
   seed_user.role_id = role_count
   seed_user.save
+  puts "Associated role to user"
   # Increment counts and index for the next user
   role_count = role_count + 1
   name_index = name_index + 1

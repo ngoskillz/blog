@@ -45,4 +45,11 @@ class User < ActiveRecord::Base
   def set_default_role
     self.role ||= Role.find_by_name('user')
   end
+
+    # Define formatted email
+  def formatted_email
+    @name = username
+    @email = email
+    "#{@name} <#{@email}>"
+  end
 end

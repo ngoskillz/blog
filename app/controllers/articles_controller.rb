@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
-  # http_basic_authenticate_with name: "mikengo", password: "iloveyammer", except: [:index, :show]
+  before_action :authenticate_user!, :except => [:index, :show]
+  before_action :verified_contributor, :except => [:index, :show]
 
   def index
     @articles = Article.all
@@ -45,7 +46,14 @@ class ArticlesController < ApplicationController
 	end
 
 	private
-	  def article_params
+	  
+  def article_params
 	    params.require(:article).permit(:title, :text)
-	  end
+	end
+
+  def verified_contributor
+    unless current_user.role.name == "admin" || current_user.role.name == "editor"
+      redirect_to :articles, :alert => "Access denied."
+    end
+  end
 end

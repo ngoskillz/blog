@@ -1,7 +1,7 @@
 class UsersManagementController < ApplicationController
-  # load_and_authorize_resource
-  # GET /users
-  # GET /users.json  
+  before_action :authenticate_user!
+  before_action :admin_only
+
   def index
     @users = User.all
 
@@ -90,4 +90,43 @@ class UsersManagementController < ApplicationController
 
   def _form
   end
+
+  private
+
+  def admin_only
+    unless current_user.role_id == 5
+    # unless current_user.role.name == "admin"
+      redirect_to :root, :alert => "Access denied."
+    end
+  end
+
+  def change_user_role(selected_role)
+    if current_user.role.name == "admin"
+      new_role_id = new_role(selected_role)
+      current_user.role_id = new_role_id
+      current_user.save
+    else
+      redirect_to :back, :alert => "Access denied."
+    end
+  end
+
+  def new_role(selected_role)
+    if selected_role == "user"
+      new_role_id = 1
+    elsif selected_role == "moderator"
+      new_role_id = 2
+    elsif selected_role == "banned"
+      new_role_id = 3
+    elsif selected_role == "editor"
+      new_role_id = 4
+    elsif selected_role == "admin"
+      new_role_id = 5
+    end
+    return new_role_id
+  end
+
+  def secure_params
+    params.require(:user).permit(:role)
+  end
+
 end

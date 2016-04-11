@@ -1,0 +1,126 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "bootstrap_custom";
+
+
+/* color variables, etc. */
+
+$black: #000000;
+$gray-dark: #383838;
+$gray-medium: #787878;
+$gray-medium-light: #B8B8B8;
+$gray-light: #F8F8F8;
+$white: #FFFFFF;
+$red-dark: #380000;
+$red-medium: #780000;
+$red-medium-light: #B80000;
+$red: #FF0000;
+$blue-dark: #000060;
+$blue-medium: #1460aa;
+$blue-medium-light: #1e90ff;
+$blue: #0000E0;
+$green-dark: #114c2a;
+$green-medium: #1d781d;
+$green-medium-light: #03a678;
+$green: #00AA00;
+$orange-dark: #802200;
+$orange-medium: #d43900;
+$orange-medium-light: #e65722;
+$orange: #ff4500;
+
+
+
+/* universal main layout */
+
+body {
+  padding-top: 80px;
+  padding-bottom: 60px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+}
+
+.center h1 {
+  margin-bottom: 10px;
+}
+
+.left {
+  text-align: left;
+}
+
+.left h1 {
+  margin-bottom: 10px;
+}
+
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: #777;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+
+/* footer */
+
+footer {
+  margin-top: 250px;
+  padding-top: 5px;
+  border-top: 1px solid $green-medium-light;
+  color: #777;
+}
+
+footer a {
+  color: #555;
+}
+
+footer a:hover {
+  color: #222;
+}
+
+footer small {
+  float: left;
+}
+
+footer ul {
+  float: right;
+  list-style: none;
+}
+
+footer ul li {
+  float: left;
+  margin-left: 15px;
+}
+
+
