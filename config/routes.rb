@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
-  # http://guides.rubyonrails.org/routing.html how to route and tells you what you get for free
-
-  # replace devise_for :users with:
   devise_for :users,  :controllers => { :registrations => "users/registrations" }
+  resources :users
 
   # Creating a new resource article
   resources :articles do
@@ -23,7 +21,7 @@ Rails.application.routes.draw do
 
   # TODO: Implement this if needed
   # User List
-  get "user" => "users#index", as: :user
+  # get "user" => "users#index", as: :user
 
   # Admin stuff
   get "admin" => "users_management#index", as: :admin

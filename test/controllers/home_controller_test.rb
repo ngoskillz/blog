@@ -4,7 +4,7 @@ class HomeControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
-    assert_select "title", "TinyNGO.com"
+    assert_select "title", "Home | TinyNGO.com"
   end
 
   test "should get categories" do
